@@ -5,9 +5,10 @@
  */
 var insert = function(intervals, newInterval) {
     //edge case 
-   // if the intervals has length of 0, return empty array
+     //push the newInterval into intervals 
+   // if the intervals has length of 1, return empty interval
     
-  //push the newInterval into intervals 
+ 
     //sort the elements by the first index of each interval (element)
     // edge case, check if the length of the interval is 1, return intervals 
     
@@ -25,7 +26,6 @@ var insert = function(intervals, newInterval) {
     //return the new array
     
     
-    //if (intervals.length === 0) return [];
     intervals.push(newInterval)
     if (intervals.length === 1) return intervals;
 //will sort the elements in the array in accending order where 0 index is less than
