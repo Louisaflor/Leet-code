@@ -26,10 +26,14 @@ var reverseList = function(head) {
         // console.log("LIST: ", head)
         // console.log("WHAT IS NEW NODE: ", head.val)
         
-            next = head.next
-            head.next = prev
-            prev = head
-            head = next
+            next = head.next //(2, 3)
+            head.next = prev //(null, 1)
+            prev = head      //(1, 2)
+            head = next      //(2, 3)
+//          console.log('next:', next)
+//          console.log('head.next:', head.next)
+//          console.log('prev:', prev)
+//          console.log('head:', head)
         
       
     }
