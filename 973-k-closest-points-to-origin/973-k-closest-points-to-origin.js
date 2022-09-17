@@ -25,55 +25,53 @@
  
  */
 
-var kClosest = function(points, k) {
-    //edge case 
-    if (points.length === 1 && k === 1) {
-        return points 
-    }
-    var sqrt = []
-    var results = []
+// var kClosest = function(points, k) {
+//     //edge case 
+//     if (points.length === 1 && k === 1) {
+//         return points 
+//     }
+//     var sqrt = []
+//     var results = []
     
-    for (var i = 0; i < points.length; i++) {
-        var distance = distances(points[i], [0,0])
-        sqrt.push(distance)
-    }
-    //console.log('sqrt: ', sqrt)
+//     for (var i = 0; i < points.length; i++) {
+//         var distance = distances(points[i], [0,0])
+//         sqrt.push(distance)
+//     }
+//     //console.log('sqrt: ', sqrt)
     
-    while(k !== 0) {
-        var smallest = sqrt[0]
-        var index = 0
-        for (var i = 1; i < sqrt.length; i++) {
-             //console.log('index: ', i)
-            if (sqrt[i] < smallest) {
-                smallest = sqrt[i]
-                index = i
+//     while(k !== 0) {
+//         var smallest = sqrt[0]
+//         var index = 0
+//         for (var i = 1; i < sqrt.length; i++) {
+//              //console.log('index: ', i)
+//             if (sqrt[i] < smallest) {
+//                 smallest = sqrt[i]
+//                 index = i
                 
-            }
+//             }
             
-        }
+//         }
         
-        results.push(points[index])
-        //console.log('results?: ', index)
-        points.splice(index,1)
-        sqrt.splice(index,1)
-        k--
-    }
+//         results.push(points[index])
+//         //console.log('results?: ', index)
+//         points.splice(index,1)
+//         sqrt.splice(index,1)
+//         k--
+//     }
     
-    return results;
+//     return results;
     
-};
+// };
 
-var distances = function(point1, point2) {
-    var x = Math.pow(( point1[0] - point2[0]), 2)
-    var y =  Math.pow(( point1[1] - point2[1]), 2)
-    //console.log('x: ', x, "y", y)
-    return Math.sqrt( x+ y)
+// var distances = function(point1, point2) {
+//     var x = Math.pow(( point1[0] - point2[0]), 2)
+//     var y =  Math.pow(( point1[1] - point2[1]), 2)
+//     //console.log('x: ', x, "y", y)
+//     return Math.sqrt( x+ y)
+// }
+
+var kClosest = function(points, k) {
+    points.sort((a,b) => (Math.pow(a[0], 2) + Math.pow(a[1],2)) - (Math.pow(b[0], 2) + Math.pow(b[1],2)))
+                
+    return points.slice(0, k)
 }
-
-//4
-//7
-
-
-//12
-//26
-//12
