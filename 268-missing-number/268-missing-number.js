@@ -18,31 +18,53 @@
  
  */
 var missingNumber = function(nums) {
-    var length = nums.length
-    var index = 0
+//     var length = nums.length
+//     var index = 0
     
-    while (index !== length) {
-        var notMissing = false
-        //console.log('index: ', index)
-        for (var i = 0; i < nums.length; i++) {
+//     while (index !== length) {
+//         var notMissing = false
+//         //console.log('index: ', index)
+//         for (var i = 0; i < nums.length; i++) {
           
-            if (nums[i] === index) {
-                  //console.log('practice: ', index, i)
-                notMissing = true
-                index++ 
-                break;
-            } 
-        }
+//             if (nums[i] === index) {
+//                   //console.log('practice: ', index, i)
+//                 notMissing = true
+//                 index++ 
+//                 break;
+//             } 
+//         }
         
-        if (notMissing) {
-            continue;
-        } else {
-            return index
-        }
+//         if (notMissing) {
+//             continue;
+//         } else {
+//             return index
+//         }
         
-    }
+//     }
     
-    return length
+//     return length
+    
+     var i = 0;
+        var n = nums.length;
+        while(i<n)
+        {
+			var correctIdx = nums[i]; //where this element should be in sorted array
+            if(correctIdx < n && correctIdx !== i) //if not already at correct position and correct position < n
+            {
+                //swap(nums[i],nums[correctIdx]); //put current element at correct position
+                var swap = nums[i]
+                nums[i] = nums[correctIdx]
+                nums[correctIdx] = swap
+            } 
+			else
+				i++; // move to next index
+        }
+        for(var i = 0; i < n; i++) {
+            if (nums[i] !== i)
+                return i;
+        }
+            
+        return n;
     
 };
 
