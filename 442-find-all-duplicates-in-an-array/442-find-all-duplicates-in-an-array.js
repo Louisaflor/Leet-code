@@ -27,7 +27,6 @@ var findDuplicates = function(nums) {
     
     while (index < length) {
         var currNum = nums[index] -1
-        // if (currNum - 1 !== index)
         if(nums[index] !== nums[currNum]) {
             var swap = nums[index]
             nums[index] = nums[currNum]
@@ -44,7 +43,7 @@ var findDuplicates = function(nums) {
 
     }
     
-    [3,4,1,2,5]
+    //[3,4,1,2,5]
     
     return results;
 //     //console.log(length)
