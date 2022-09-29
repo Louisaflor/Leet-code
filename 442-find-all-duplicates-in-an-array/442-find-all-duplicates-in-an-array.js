@@ -2,84 +2,61 @@
  * @param {number[]} nums
  * @return {number[]}
  
- //create a var to store the length of nums'
- //create var called index and equal to 0
- //creeate a results array
- 
- //while i is less than length
- //get the curr num
- //check if the curr num - 1 is the same and the index
- //if NOT the same
-    //check if the 'actual' index is the same at the curr num
-        //if yes, push the curr num in the the results array
-        //swap the number with the index + 1
-    //if not, swap the number with the curr index 
- //if the same
- //increment the index 
- 
- return the array
+ [1,1,2]
+ [4,3,2,7,8,2,3,1]
+ [8,3,2,7,4,2,3,1]
+ [1,3,2,7,4,2,3,8]
+ [1,2,3,7,4,2,3,8]
+ [1,2,3,3,4,2,7,8]
+ [1,2,3,4,3,2,7,8]
+ check if the num is in the correct place 
+ //if not, 
+  /check if curr index num is the same as the curr num?
+   //if it is, increment i
+   //if not we swap 
+  
+  //otherwise
+   //i++ 
+   
+   //itereate over the nums 
+   check if the element is not in its correct index
+   push it to and array
+   
+   return the array
+   
  */
 var findDuplicates = function(nums) {
-    var length = nums.length
-    var index = 0
-    var results =[]
+    let n = nums.length
+    let i =  0
+    let results = []
     
-    
-    while (index < length) {
-        var currNum = nums[index] -1
-        if(nums[index] !== nums[currNum]) {
-            var swap = nums[index]
-            nums[index] = nums[currNum]
-            nums[currNum] = swap
+    while (i < n) {
+        //console.log('i:', i)
+        var currNum = nums[i] // NUMBER 
+        if (currNum - 1 !== i) {
+            if (currNum === nums[currNum - 1]) {
+                //console.log('it goes here')
+                i++
+                //console.log('what is i:', i)
+            } else {
+                var swap = currNum
+                nums[i] = nums[currNum - 1]
+                nums[currNum - 1] = swap
+            }
         } else {
-            index++
+            i++ 
+            //console.log('other i here: ', i)
         }
+        //console.log('array: ', nums)
     }
     
-    for (var i = 0; i < nums.length; i++) {
-        if (nums[i] !== i+1) {
-            results.push(nums[i])
+    for (var index = 0; index < nums.length; index++) {
+        var currNum = nums[index]
+        if (currNum - 1 !== index) {
+            results.push(currNum)
         }
-
     }
-    
-    //[3,4,1,2,5]
     
     return results;
-//     //console.log(length)
-    
-//     while (index < length) {
-//         var currNum = nums[index]
-//          //console.log('num: ', currNum)
-//         if (index < length && currNum -1 === index) {
-            
-//             index++
-//              //console.log('get in here?',index)
-//             continue;
-            
-//         } else {
-          
-//              var prev = currNum - 1
-//             if (nums[prev] === currNum) {
-//                  if (!(results.includes(currNum))) {
-//                      results.push(currNum)
-//                  }
-//                 var swap = nums[index]
-//                 nums[index] = nums[currNum]
-//                 nums[currNum] = swap
-//                 index++
-//                 //console.log('go in here: ', nums)
-                
-//             } else {
-//                 var swap = nums[index]
-//                 nums[index] = nums[currNum -1]
-//                 nums[currNum -1] = swap
-//             }
-//         }
-//         //index++
-//     }
-//     //console.log('new nums:', results)
-    
     
 };
-//[1,2,1]
