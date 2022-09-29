@@ -10,99 +10,40 @@
  * @param {ListNode} list2
  * @return {ListNode}
  
- i: two singly linked list (sorted)
- o: combine two linked list together (sorted)
- c: n/a
- e: if one linked list length is longer than the other 
+ //create two var, each will be the linked list 
+//create a new node to store the merge linked lsit 
+//while neither of the linked list is null
+    //check if the curr val for each node if less and or equal to each other
+    //if one of them is less than, we will merge it to the new linked list 
+    //move one to the next node 
+
+//find which node is not null, then we could add the rest in the new node
+//return the new node 
  */
-// var mergeTwoLists = function(list1, list2) {
-//     //create a new Linked List 
-//     var newLinked = new ListNode()
-//     //store the new Linked list in a variable 
-//     var merge = newLinked
+var mergeTwoLists = function(list1, list2) {
+    //edge case 
     
-//     //while the curr l1 & l2 values still exist 
-//     while (list1 && list2) {
-//          //check which value is the smallest
-//         if (list1.val < list2.val) {
-//            newLinked.next = list1
-//             //move on to the next node 
-//             list1 = list1.next 
-//         } else {
-//             newLinked.next = list2
-//             list2 = list2.next 
-//         }
-//         //place smallest value in the new linked list .next
-//         //also move forward with the next node in l1 or l2 
-//        // also move on the the next null node in the new linked list 
-//         newLinked = newLinked.next 
-//     }
-     
+    //let first = list1
+    //let sec = list2 
+    var result = new ListNode()
+    var result2 = result
     
-//     //check which list is the longest and add it to the end of the new linked list 
-//     if (!list1) {
-//         newLinked.next = list2
-//     } else if (!list2) {
-//          newLinked.next = list1
-//     }
-    
-//     //return 
-//     return merge.next
-// };
-
-
-var mergeTwoLists = function(list1, list2) { 
-    console.log("What is list1 list: ", list1)
-    //create a new linked list 
-    var newList = new ListNode()
-    //store the linked list in a var 
-    var linkedList = newList
-    
-    //while the list2 and list 2 is not undefined/null 
     while (list1 && list2) {
-      //check which val is the smallest 
         if (list1.val < list2.val) {
-        // add either list1 or list2 in the new linkedList.next
-            newList.next = list1
-       // move on the next node in either list1 or list2
+            result.next = list1
             list1 = list1.next
         } else {
-            newList.next = list2
+            result.next = list2
             list2 = list2.next
         }
-      
-    //move on the the next null node in the new linkedList 
-        newList = newList.next
+        //console.log('result:', result)
+        result = result.next
     }
-     
-    
-    //check which list is undefined so we can add the reamining list in the new linkedList
-    if (!list1) {
-        newList.next = list2
-    } else if(!list2) {
-        newList.next = list1
+    if (list1) {
+        result.next = list1
+    } else {
+        result.next = list2
     }
     
-    //return 
-    return linkedList.next 
-}
-
-// var mergeTwoLists = function(list1, list2) {
-    
-    
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return result2.next
+};
