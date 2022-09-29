@@ -86,3 +86,23 @@ var mergeTwoLists = function(list1, list2) {
     //return 
     return linkedList.next 
 }
+
+// var mergeTwoLists = function(list1, list2) {
+    
+    
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
