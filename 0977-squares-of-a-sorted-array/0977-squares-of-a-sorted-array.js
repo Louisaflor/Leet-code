@@ -2,27 +2,37 @@
  * @param {number[]} nums
  * @return {number[]}
  
+ while the start is less than the end 
+ if the start index value is greater than or equal to the end index value
+ make the start index value equal the curr position for the results array
+ decrement the position by 1
+ increment the start by 1 
  
- cretae a new array
+ if the start index value is less than the end inex value
+ make the curr position for result the end index value 
+ decrement the position by 1
+ decrement the end by 1 
  
- itereate over nums 
- for every char, square and push the new array
- 
- 
+ return the result array
  */
 var sortedSquares = function(nums) {
-    let sortedArr = []
+    let start = 0
+    let end = nums.length - 1
+    let position = end 
+    let result = []
     
-    for (var i = 0; i < nums.length; i++) {
-        var char = nums[i]
-        sortedArr.push(char * char)
+    while (start <= end) {
+        if (nums[start] ** 2 >= nums[end] ** 2) {
+            result[position] = nums[start] ** 2
+            position--
+            start++
+        } else {
+            result[position] = nums[end] ** 2
+            position--
+            end--
+        }
     }
-    // var sorted = sortedArr.sort((a,b) =>  a > b)
-    // console.log(sorted)
     
-     sortedArr.sort((a, b) => {
-        return a - b
-    })
+    return result
     
-    return sortedArr
 };
