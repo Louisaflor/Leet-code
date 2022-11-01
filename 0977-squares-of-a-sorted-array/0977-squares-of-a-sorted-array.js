@@ -1,38 +1,50 @@
 /**
  * @param {number[]} nums
  * @return {number[]}
+ [-4,-1,0,3,10]
+  16        100
+  16      9
+     1    9
+     1 0
+ [0,1,9,16,100]
+ start 
+ end
+ position for new array = end 
  
- while the start is less than the end 
- if the start index value is greater than or equal to the end index value
- make the start index value equal the curr position for the results array
- decrement the position by 1
- increment the start by 1 
+ while start < end 
+ square start and end and compare which item is the greatest 
+ new arrray position will be the greatest number 
+ decrement the position and the end 
  
- if the start index value is less than the end inex value
- make the curr position for result the end index value 
- decrement the position by 1
- decrement the end by 1 
+ else 
+ new 
  
- return the result array
+ 
  */
 var sortedSquares = function(nums) {
+    let newArr = []
     let start = 0
     let end = nums.length - 1
     let position = end 
-    let result = []
     
     while (start <= end) {
-        if (nums[start] ** 2 >= nums[end] ** 2) {
-            result[position] = nums[start] ** 2
-            position--
+        // check if the start value is greater than end value (square both of them)
+        if (Math.pow(nums[start], 2)  >= Math.pow(nums[end], 2)) {
+            //make the square value equal to the newArr position
+            newArr[position] = Math.pow(nums[start], 2)
+            //incremenet the start by 1 and decrement the position by 1
             start++
-        } else {
-            result[position] = nums[end] ** 2
             position--
+        } else { //if the end value is greater than the start value (square)
+            //make the square value equal to the newArr position 
+            newArr[position] = Math.pow(nums[end], 2)
+            //decrement the end by 1 and position
             end--
+            position--
         }
+            
     }
     
-    return result
+    return newArr;
     
 };
