@@ -18,8 +18,7 @@
  
  
   [2,0,2,1,1,0]
- [0,0,2,1,1,2]
- [0,0,1,1,2,2]
+
  */
 var sortColors = function(nums) {
         let start = 0;
@@ -29,6 +28,8 @@ var sortColors = function(nums) {
       if (nums[index] === 0) {
           //console.log('start:', start, 'index:', index)
         swap(nums, start++, index++);
+          // start++
+          // index++
       } else if (nums[index] === 1) {
         index++;
       } else {
