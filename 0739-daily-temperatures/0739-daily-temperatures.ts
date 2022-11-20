@@ -19,27 +19,80 @@ return count
  */
 
 
+// function dailyTemperatures(temperatures: number[]): number[] {
+//     let result:number[] = []
+//     let count:number;
+//     let noWarmTemp:boolean; 
+
+//     for (let i = 0; i < temperatures.length; i++) {
+//         count = 0;
+//         noWarmTemp = true;
+//         let currTemp:number = temperatures[i]
+//         for (let k = i + 1; k < temperatures.length; k++) {
+//             count++
+//             if (currTemp < temperatures[k]) {
+//                 result.push(count)
+//                 noWarmTemp = false;
+//                 break;
+//             }
+//         }
+
+//         if(noWarmTemp) result.push(0)
+//     }
+
+//     return result;
+
+// };
+
+/*
+
+ 
+ result []
+ stack [0]
+ 
+ iterate over temperatures
+    grab last index from stack
+    grab the curr num 
+    while the curr num is greater than the value of last index
+        pop off the last char in stack
+        subtract the curr index - last chat in stack
+        push num into result 
+        
+    push the index in stack
+    
+    iterate over the stack 
+        push 0 into result 
+*/
+
 function dailyTemperatures(temperatures: number[]): number[] {
-    let result:number[] = []
-    let count:number;
-    let noWarmTemp:boolean; 
-
-    for (let i = 0; i < temperatures.length; i++) {
-        count = 0;
-        noWarmTemp = true;
+    let result:number[] = [];
+    let stack:number[] = [0];
+    
+    for (let i = 1; i < temperatures.length; i++) {
         let currTemp:number = temperatures[i]
-        for (let k = i + 1; k < temperatures.length; k++) {
-            count++
-            if (currTemp < temperatures[k]) {
-                result.push(count)
-                noWarmTemp = false;
-                break;
-            }
+        
+        while (currTemp > temperatures[stack[stack.length - 1]]) {
+            let popLastStack:number = stack.pop() // index of temperature
+            result[popLastStack] = i - popLastStack
         }
-
-        if(noWarmTemp) result.push(0)
+        stack.push(i)
     }
+    
+    for (let i = 0; i < stack.length; i++) {
+        result[stack[i]] = 0
+    }
+    
+    return result; 
+}
 
-    return result;
 
-};
+
+
+
+
+
+
+
+
+
+
